@@ -1,0 +1,81 @@
+Spam mail detection Project
+
+Get data from Kaggle.com 
+
+1)Import all basic library 
+2)Import Dataset
+3)Data Preprocessing 
+-->check Data Shape
+--> Data information
+--> Import Label encoder from Sklearn.preprocessing And Fit it on the category column (Target column)
+	It convert the data Ham=0 and Spam=1
+--> Check null values and Duplicate vales in data set.
+	In this data 0 null  values are present and 403 Duplicate are present 
+	Drop the Duplicate values And check the remaining data set Shape
+
+2) EDA ( Exploratory Data Analyst )
+	Percentage of ham or spam with help of pie chat
+	-->We get 87.37% Ham Data And 12.63% Spam Data in your data Set 
+
+	Your Data is imbalanced 
+	--> Ham is to Heigh & Spam is Too Low
+
+	We Analysis the massage column with contain how many Num_characters ,num_Words,number of sentence in  three columns new columns with the help of nltk library.(Natural language took kit)
+--> punkt
+	It does not require training on a labeled dataset; it learns from the text itself using an unsupervised learning algorithm
+	
+	1.First we find the length of the each massage row and create new col of that data
+	2.It separate the msg col word to word with the use nltk.word_tokenize in lambda function it gives num of words present in the msg col.
+	3.It separate the msg col sentence wise with the use nltk.sent_tokenize in lambda function it gives num of sentence present in the msg col.
+
+	--> Describe the three new columns (['num_characters','Num_Words','Num_Sentence'])
+	--> Describe the three new columns with ham condition
+	--> Describe the three new columns with spam condition
+	--> For better under standing we plot the graph on new columns
+	-->Find the correlation of the data 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.Data Preprocessing
+--> Using a function to this
+	Lower Case
+	--> Convert all the data in lower case
+
+	Tokenization
+	--> Break the sentence in the words with the help of nltk library 
+
+	Removing special Characters 
+	--> Remove the special characters from the column with use of loop 
+first make a blank list and then use for loop in if condition use isalnum to find special character 
+
+	Removing stop words and punctuation 
+	--> To removing stop words we have to import stop words from nltk.corpus
+		Stop words means which words dose not contribute in the sentence meaning  it use for only sentence formation
+	Syntax: import nltk
+		     nltk.download('stopword')
+		    from nltk.corpus import stopwords
+		     stopwords.words('english')
+	
+	--> For punctuation mark we have to import string  then use string.punctuation
+ 
+	To run this we use Loop
+
+	Stemming 
+		it removes ing from the words and trance from them in root from 
+ 		eg: dancing trance from in danc , loving trance from in love etc
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Genrate the word cloud ( it shows the important words in large font size)
+
+we required to install pip install wordcloud
+from word cloud import word cloud
+
+To easy under standing we extract top used words from massages
+
+top 30 words
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Model building 
+
+conver text into vector form 
+1) Bag of words
+	It makes separate words column and check the how many time words are repeated and this numbers are your vectors .
+2) TFIDF
+3) Word to word
